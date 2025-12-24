@@ -7,27 +7,25 @@ using namespace std;
 
 bool isPalindrome(string s) {
     if(s.empty()) return true; 
-        int left = 0, right = s.size() - 1;
-        while(left < right) 
+    vector <char> filtered;
+    for(char c : s) 
+    {
+        if(isalnum(c)) 
         {
-            if (!isalnum(s[left]))
-            {
-                left++;
-            }
-            else if(!isalnum(s[right])){
-                right--;
-            }
-            else 
-            {
-                if(tolower(s[left]) != tolower(s[right])) 
-                {
-                    return false;
-                }
-                left++;
-                right--;
-            }
+            filtered.push_back(tolower(c));
         }
-        return true;
+    }
+    s = string(filtered.begin(), filtered.end());
+    cout << s << endl;
+    int left = 0, right = s.size() - 1;
+    while(left < right) 
+    {
+        if(s[left++] != s[right--]) 
+        {
+            return false;
+        }
+    }
+    return true;
 }
         
 
