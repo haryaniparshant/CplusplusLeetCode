@@ -9,11 +9,7 @@ using namespace std;
 bool CanConstruct(string ransomNote, string magazine) {
     unordered_map<char, int> charCount;
     for (char c : magazine) {
-        if(charCount.find(c) != charCount.end()) {
-            charCount[c]++;
-            continue;
-        }
-        charCount[c] = 1 ;
+        charCount[c]++;
     }
     for (char c : ransomNote) {
         if (charCount.find(c) == charCount.end() || charCount[c] == 0) {
